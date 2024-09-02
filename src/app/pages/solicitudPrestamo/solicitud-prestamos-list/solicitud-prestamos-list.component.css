@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 90%;
+  }
+  
+  td, th {
+    width: 20%;
+  }
+
+.filtros{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filtros button{
+    max-height: 50px;
+}

@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Nueva Solicitud</h1>
+<div mat-dialog-content>
+    <form class="example-form" [formGroup]="form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Usuario</mat-label>
+          <input type="text"
+                 placeholder="Seleccione un Usuario"
+                 aria-label="Usuario"
+                 matInput
+                 formControlName="usuario"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let usuario of usuariosItems" [value]="usuario">
+              {{usuario}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Libro</mat-label>
+            <input type="text"
+                   placeholder="Seleccione como máximo 3 Libros"
+                   aria-label="Libro"
+                   matInput
+                   formControlName="libro"
+                   [matAutocomplete]="auto2">
+            <mat-autocomplete #auto2="matAutocomplete" >
+              <mat-option *ngFor="let libro of copiaLibrosItems" [value]="libro.texto">
+                {{libro.texto}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <button mat-raised-button color="accent" (click)="agregarLibros($event)">Agregar</button>
+          <br/><br/>
+          <p>Libros Seleccionados : {{librosSelecionados.length}}</p>
+            <div *ngIf="librosSelecionados.length > 0"> 
+                <ul >
+                    <li *ngFor="let libro of librosSelecionados">{{ libro.Libro }}</li>
+                </ul>
+            </div>
+               
+           
+      </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button  (click)="guardar()">Guardar</button>
+</div>
